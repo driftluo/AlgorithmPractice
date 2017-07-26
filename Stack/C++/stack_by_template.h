@@ -23,7 +23,7 @@ public:
     Stack();
     ~Stack();
     void push(T x);
-    int pop();
+    T pop();
     void clear();
     bool isEmpty();
     int len() const;
@@ -48,7 +48,7 @@ void Stack<T>::push(T x) {
 }
 
 template <typename T>
-int Stack<T>::pop() {
+T Stack<T>::pop() {
     if (length == -1) {
         abort();
     }
