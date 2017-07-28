@@ -46,3 +46,53 @@ void CreateALGraph(GraphAdjList *G) {
         G->adjList[j].firstedge = e;
     }
 }
+
+void DFS(GraphAdjList G, int i) {
+    EdgeNode *p;
+    visited[i] = TRUE;
+    printf("%c ", G.adjList[i].data);
+    p = G.adjList[i].firstedge;
+    while(p) {
+        if (!visited[p->adjvex]) {
+            DFS(G, p->adjvex);
+        }
+        p = p->next;
+    }
+}
+
+void DFSTraverse(GraphAdjList G) {
+    int i;
+    for (i = 0; i < G.numVertexes; i++) {
+        visited[i] = FALSE;
+    }
+    for (i = 0; i < G.numVertexes; i++) {
+        if (!visited[i]) {
+            DFS(G, i);
+        }
+    }
+}
+
+void BFSTraverse(GraphAdjList G) {
+    int i;
+    EdgeNode *p;
+    Queue Q;
+    for (i = 0; i < G.numVertexes; i++) {
+        visited[i] = FALSE;
+    }
+    initQueue(&Q);
+    for (i = 0; i < G.numVertexes; i++) {
+        if (!visited[i]) {
+            visited[i] = TRUE;
+            printf("%c ", G.adjList[i].data);
+            EnQueue(&Q, i);
+            while (!QueueEmpty(Q)) {
+                if (!visited[p->adjvex]) {
+                    visited[p->adjvex] = TRUE;
+                    printf("%c ", G.adjList[p->adjvex].data);
+                    EnQueue(&Q, p->adjvex);
+                }
+                p = p->next;
+            }
+        }
+    }
+}
