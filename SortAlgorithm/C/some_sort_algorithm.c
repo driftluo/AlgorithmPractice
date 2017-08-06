@@ -47,8 +47,10 @@ void BubbleSort2(SqList *L) {
     for (i = 1; i < L->length && flag; i++) {
         flag = FALSE;
         for (j = L->length-1; j >= i; j--) {
-            swap(L, j, j+1);
-            flag = TRUE;
+        	if (L->r[j] > L->r[j+1]){
+	            swap(L, j, j+1);
+	            flag = TRUE;
+        	}
         }
     }
 }
