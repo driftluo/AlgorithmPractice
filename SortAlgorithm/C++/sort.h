@@ -48,6 +48,35 @@ void insertSort(vector<T> &a, int left, int right) {
 }
 
 template <typename T>
+void heapAdjust(vector<T> &a, int begin, int end) {
+    int temp, j;
+    temp = a[begin];
+    for (j = 2*begin; j <= end; j*=2) {
+        if (j < end && a[j] < a[j+1]) {
+            j++;
+        }
+        if (temp >= a[j]) {
+            break;
+        }
+        a[begin] = a[j];
+        begin = j;
+    }
+    a[begin] = temp;
+}
+
+template <typename T>
+void heapSort(vector<T> &a) {
+    int i;
+    for (i = (a.size()-1)/2; i > 0; i--) {
+        heapAdjust(a, i, a.size()-1);
+    }
+    for (i = a.size()-1; i > 0; i--) {
+        swap(a[0], a[i]);
+        heapAdjust(a, 0, i-1);
+    }
+}
+
+template <typename T>
 void merg(vector<T> &a, int left, int m, int right, vector<T> temp) {
     int lb = left, rb = m, tb = left;
     while (lb != m && rb != right) {
