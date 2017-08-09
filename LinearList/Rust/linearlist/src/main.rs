@@ -7,7 +7,7 @@ struct Node {
 #[derive(Debug)]
 struct List {
     head: Option<Box<Node>>,
-    length: i32,
+    length: u32,
 }
 
 impl Node {
@@ -34,7 +34,7 @@ impl List {
         }
     }
 
-    fn push_front(&mut self, d: i32) {
+    fn push(&mut self, d: i32) {
         let mut node = Node::new_with_data(d);
         let head = self.head.take();
         match head {
@@ -44,7 +44,7 @@ impl List {
         }
     }
 
-    fn pop_front(&mut self) {
+    fn pop(&mut self) {
         self.head.take().map(|node| {
             self.head = node.next;
         });
@@ -54,9 +54,9 @@ impl List {
 
 fn main() {
     let mut list = List::new();
-    list.push_front(1);
-    list.push_front(2);
-    list.push_front(3);
-    list.pop_front();
+    list.push(1);
+    list.push(2);
+    list.push(3);
+    list.pop();
     println!("{:?}", list)
 }
