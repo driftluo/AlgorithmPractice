@@ -55,19 +55,19 @@ fn main() {
     let a = TestStruct{ a: 5 };
     let b = TestStruct{ a: 9 };
 
-    let mut s = Stack::<&TestStruct>::new();
-    assert_eq!(s.pop(), None);
+    let mut stack = Stack::<&TestStruct>::new();
+    assert_eq!(stack.pop(), None);
 
-    s.push(&a);
-    s.push(&b);
-    println!("{:?} {}", s, s.len());
+    stack.push(&a);
+    stack.push(&b);
+    println!("{:?} {}", stack, stack.len());
 
-    assert_eq!(s.pop(), Some(&b));
-    println!("{:?} {}", s, s.len());
+    assert_eq!(stack.pop(), Some(&b));
+    println!("{:?} {}", stack, stack.len());
 
-    assert_eq!(s.pop(), Some(&a));
-    println!("{:?} {}", s, s.len());
+    assert_eq!(stack.pop(), Some(&a));
+    println!("{:?} {}", stack, stack.len());
 
-    assert_eq!(s.pop(), None);
-    println!("{:?} {}", s, s.len());
+    assert_eq!(stack.pop(), None);
+    println!("{:?} {}", stack, stack.len());
 }

@@ -73,19 +73,19 @@ fn main() {
     let a = TestStruct{ a: 5 };
     let b = TestStruct{ a: 9 };
 
-    let mut s = Queue::<&TestStruct>::new();
-    assert_eq!(s.pop(), None);
+    let mut queue = Queue::<&TestStruct>::new();
+    assert_eq!(queue.pop(), None);
 
-    s.push(&a);
-    s.push(&b);
-    println!("{:?} {}", s, s.len);
+    queue.push(&a);
+    queue.push(&b);
+    println!("{:?} {}", queue, queue.len);
 
-    assert_eq!(s.pop(), Some(&a));
-    println!("{:?} {}", s, s.len);
+    assert_eq!(queue.pop(), Some(&a));
+    println!("{:?} {}", queue, queue.len);
 
-    assert_eq!(s.pop(), Some(&b));
-    println!("{:?} {}", s, s.len);
+    assert_eq!(queue.pop(), Some(&b));
+    println!("{:?} {}", queue, queue.len);
 
-    assert_eq!(s.pop(), None);
-    println!("{:?} {}", s, s.len);
+    assert_eq!(queue.pop(), None);
+    println!("{:?} {}", queue, queue.len);
 }
